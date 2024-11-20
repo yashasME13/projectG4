@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .student-details {
+            margin-top: 20px;
+        }
+
+        .student-details div {
+            margin-bottom: 15px;
+        }
+
+        .label {
+            font-weight: bold;
+            display: inline-block;
+            width: 150px;
+        }
+
+        .button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Student Details</h1>
+    <div class="student-details">
+        <div>
+            <span class="label">ID:</span>
+            <span th:text="${student.id}"></span>
+        </div>
+        <div>
+            <span class="label">Name:</span>
+            <span th:text="${student.name}"></span>
+        </div>
+        <div>
+            <span class="label">Date of Birth:</span>
+            <!-- Format date to only show the date part (e.g., yyyy-MM-dd) -->
+            <span th:text="${#dates.format(student.dateOfBirth, 'yyyy-MM-dd')}"></span>
+        </div>
+        <div>
+            <span class="label">Email:</span>
+            <span th:text="${student.email}"></span>
+        </div>
+        <div>
+            <span class="label">Course Name:</span>
+            <span th:text="${student.courseName}"></span>
+        </div>
+        <div>
+            <span class="label">Document Path:</span>
+            <span th:text="${student.documentPath}"></span>
+        </div>
+        <!-- Add a download button for the document if you want -->
+        <div>
+            <a th:href="@{/admin/download/{id}(id=${student.id})}" class="button">Download Document</a>
+        </div>
+    </div>
+    <!-- Back button to navigate to the admin dashboard -->
+    <div style="margin-top: 20px;">
+        <a th:href="@{/admin/dashboard}" class="button">Back to Dashboard</a>
+    </div>
+</div>
+</body>
+</html>

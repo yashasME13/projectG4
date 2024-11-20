@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Enrollments</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css"></head>
+<body>
+<div class="container">
+  <h2 class="text-center">Course Enrollments</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date of Birth</th>
+      <th>Contact</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="userForCourse : ${users}">
+      <td th:text="${userForCourse.name}"></td>
+      <td th:text="${userForCourse.contact}"></td>
+      <td th:text="${userForCourse.email}"></td>
+      <td>
+        <a th:href="@{/profileForCourse/{id}(id=${userForCourse.id})}" class="btn btn-primary">View</a>
+        <a th:href="@{/profileForCourse/delete/{id}(id=${userForCourse.id})}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

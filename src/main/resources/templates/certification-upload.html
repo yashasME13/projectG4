@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Certification Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9; /* Light grey background */
+            color: #333; /* Dark text color for readability */
+            padding: 20px;
+        }
+
+        h1 {
+            color: #1E3A8A; /* Dark blue color */
+        }
+
+        form {
+            background-color: white; /* White background for the form */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 500px;
+            border: 1px solid #d1d5db; /* Light gray border */
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="date"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #1E3A8A; /* Blue background */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2563EB; /* Lighter blue on hover */
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .success {
+            background-color: #d1fad6; /* Light green background */
+            color: #2c7a2c; /* Dark green text */
+        }
+
+        .error {
+            background-color: #fddede; /* Light red background */
+            color: #9b2c2c; /* Dark red text */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between; /* This will align buttons on opposite sides */
+            margin-top: 20px;
+        }
+
+        .dashboard-btn {
+            background-color: #1E3A8A; /* Blue background */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .dashboard-btn:hover {
+            background-color: #2563EB; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+<h1>Certification Upload Form</h1>
+<form th:action="@{/certification-upload}" method="post" enctype="multipart/form-data">
+    <div>
+        <label for="courseTitle">Course Title*</label>
+        <input type="text" id="courseTitle" name="courseTitle" required>
+    </div>
+    <div>
+        <label for="issuingOrganization">Issuing Organization*</label>
+        <input type="text" id="issuingOrganization" name="issuingOrganization" required>
+    </div>
+    <div>
+        <label for="completionDate">Date of Completion*</label>
+        <input type="date" id="completionDate" name="completionDate" required>
+    </div>
+    <div>
+        <label for="certificationNumber">Certification Number</label>
+        <input type="text" id="certificationNumber" name="certificationNumber">
+    </div>
+    <div>
+        <label for="file">Upload Certification (PDF/Image)*</label>
+        <input type="file" id="file" name="file" accept=".pdf,.jpg,.jpeg,.png" required>
+    </div>
+
+    <div class="button-container">
+        <button type="submit">Upload</button>
+        <!-- Dashboard button that redirects to studentlogin -->
+        <a href="#" th:href="@{/s/dashboard}">
+            <button type="button" class="dashboard-btn">Go to Dashboard</button>
+        </a>
+    </div>
+</form>
+
+<!-- Success or error message display -->
+<div th:if="${message}" th:classappend="${message.contains('success') ? 'success' : 'error'}" class="message">
+    <p th:text="${message}"></p>
+</div>
+
+</body>
+</html>

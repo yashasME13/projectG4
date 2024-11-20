@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>General Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 100px auto;
+            padding: 40px;
+            text-align: center;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #0056b3;
+            font-size: 36px;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .button {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 35px;
+            font-size: 18px;
+            text-align: center;
+            display: inline-block;
+            cursor: pointer;
+            margin: 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .button:active {
+            background-color: #003c8d;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+
+            .button {
+                font-size: 16px;
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Select Dashboard</h1>
+    <a href="#" th:href="@{/dashboard/admin}" class="button">Admin</a>
+    <a href="#" th:href="@{/s/dashboard}" class="button">Student</a>
+<!--    <a th:href="@{/dashboard/student}" class="button">Student</a>-->
+</div>
+</body>
+</html>
+g

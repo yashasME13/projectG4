@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Certification Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #1E3A8A;
+        }
+
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #1E3A8A;
+            color: white;
+        }
+
+        td {
+            background-color: #ffffff;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #1E3A8A;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #2563EB;
+        }
+    </style>
+</head>
+<body>
+<h1>Certification Details</h1>
+<table>
+    <tr>
+        <th>Field</th>
+        <th>Details</th>
+    </tr>
+    <tr>
+        <td><strong>Course Title</strong></td>
+        <td th:text="${certification.courseTitle}"></td>
+    </tr>
+    <tr>
+        <td><strong>Issuing Organization</strong></td>
+        <td th:text="${certification.issuingOrganization}"></td>
+    </tr>
+    <tr>
+        <td><strong>Date of Completion</strong></td>
+        <td th:text="${certification.completionDate}"></td>
+    </tr>
+    <tr>
+        <td><strong>Certification Number</strong></td>
+        <td th:text="${certification.certificationNumber}"></td>
+    </tr>
+</table>
+
+<!-- Download button for the certification -->
+<div style="text-align: center;">
+    <a th:href="@{/admin/download-certification/{id}(id=${certification.id})}" class="button">Download Certification</a>
+</div>
+</body>
+</html>

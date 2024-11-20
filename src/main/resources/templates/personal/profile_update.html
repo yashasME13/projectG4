@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Ratings</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css"></head>
+<body>
+<div class="container">
+  <h2 class="text-center">Change Rating and Info</h2>
+  <form th:action="@{/updateProfile}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:value="${user.id}" name="id"/>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" th:value="${user.name}" required>
+    </div>
+    <div class="mb-3">
+      <label for="dob" class="form-label">Date of Birth</label>
+      <input type="date" class="form-control" id="dob" name="dob" th:value="${user.dob}" required>
+    </div>
+    <div class="mb-3">
+      <label for="contact" class="form-label">Contact Info</label>
+      <input type="text" class="form-control" id="contact" name="contact" th:value="${user.contact}" required>
+    </div>
+    <div class="mb-3">
+      <label for="knowledge" class="form-label">Knowledge Of the Trainer</label>
+      <input type="text" class="form-control" id="knowledge" name="knowledge" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="clarity" class="form-label">Clarity Of the Training Session</label>
+      <input type="text" class="form-control" id="clarity" name="clarity" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="overallrating" class="form-label">Overall Rating of the Training</label>
+      <input type="text" class="form-control" id="overallrating" name="overallrating" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="useful" class="form-label">Was The Training Useful(Yes/No)</label>
+      <input type="text" class="form-control" id="useful" name="useful" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="profilePic" class="form-label">Profile Picture</label>
+      <input type="file" class="form-control" id="profilePic" name="profilePic" accept="image/*">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+</body>
+</html>
